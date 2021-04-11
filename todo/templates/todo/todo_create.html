@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Django Crash Course</title>
+  </head>
+  <body>
+
+    <h4>Create a todo</h4>
+
+    <form method="POST">
+      {% csrf_token %}
+      <input name="name" />
+      <input name="due_date" />
+      <button type="submit">Submit</button>
+    </form>
+
+  </body>
+</html>
