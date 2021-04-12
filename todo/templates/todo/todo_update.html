@@ -1,18 +1,16 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Django Crash Course</title>
-  </head>
-  <body>
+{% extends "base.html" %}
 
-    <h4>Update a todo</h4>
+{% block content %}
 
+  <div class="col-4 offset-4">
+    <a href="/" class="btn btn-secondary">Go home</a>
+    <h4>Update todo</h4>
     <form method="POST">
       {% csrf_token %}
+      <!-- {{ form }} -->
       {{ form.as_p }}
-      <button type="submit">Submit</button>
+      <button class="btn btn-primary" type="submit">Submit</button>
     </form>
+  </div>
 
-  </body>
-</html>
+{% endblock %}
