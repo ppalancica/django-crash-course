@@ -1,0 +1,811 @@
+https://nono.ma/python-3-default-macos
+
+https://stackoverflow.com/questions/20239232/django-server-error-port-is-already-in-use
+sudo lsof -t -i tcp:8000 | xargs kill -9
+
+
+Check python versions:
+
+$ python
+
+$ python3
+
+https://www.python.org/downloads/
+https://code.visualstudio.com/
+
+https://pypi.org/project/certifi/
+https://pypi.org/
+
+
+$ cd /Users/ppalancica/Development/Projects/django-crash-course
+
+$ pip3 install virtualenv
+
+// ---
+
+ppalancica@Pavels-MacBook-Pro django-crash-course % pip3 install virtualenv
+xcode-select: note: no developer tools were found at '/Applications/Xcode.app', requesting install. Choose an option in the dialog to download the command line developer tools.
+
+// ---
+
+ppalancica@Pavels-MacBook-Pro django-crash-course % pip3 install virtualenv
+Collecting virtualenv
+  Downloading https://files.pythonhosted.org/packages/91/fb/ca6c071f4231e06a9f0c3bd81c15c233bbacd4a7d9dbb7438d95fece8a1e/virtualenv-20.4.3-py2.py3-none-any.whl (7.2MB)
+     |████████████████████████████████| 7.2MB 2.3MB/s
+Collecting filelock<4,>=3.0.0 (from virtualenv)
+  Downloading https://files.pythonhosted.org/packages/93/83/71a2ee6158bb9f39a90c0dea1637f81d5eef866e188e1971a1b1ab01a35a/filelock-3.0.12-py3-none-any.whl
+Collecting distlib<1,>=0.3.1 (from virtualenv)
+  Downloading https://files.pythonhosted.org/packages/f5/0a/490fa011d699bb5a5f3a0cf57de82237f52a6db9d40f33c53b2736c9a1f9/distlib-0.3.1-py2.py3-none-any.whl (335kB)
+     |████████████████████████████████| 337kB 3.2MB/s
+Collecting appdirs<2,>=1.4.3 (from virtualenv)
+  Downloading https://files.pythonhosted.org/packages/3b/00/2344469e2084fb287c2e0b57b72910309874c3245463acd6cf5e3db69324/appdirs-1.4.4-py2.py3-none-any.whl
+Requirement already satisfied: six<2,>=1.9.0 in /Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.8/lib/python3.8/site-packages (from virtualenv) (1.15.0)
+Installing collected packages: filelock, distlib, appdirs, virtualenv
+ERROR: Could not install packages due to an EnvironmentError: [Errno 13] Permission denied: '/Library/Python/3.8'
+Consider using the `--user` option or check the permissions.
+
+WARNING: You are using pip version 19.2.3, however version 21.0.1 is available.
+You should consider upgrading via the 'pip install --upgrade pip' command.
+
+// ---
+
+ppalancica@Pavels-MacBook-Pro django-crash-course % sudo pip3 install virtualenv
+Password:
+WARNING: The directory '/Users/ppalancica/Library/Caches/pip' or its parent directory is not owned or is not writable by the current user. The cache has been disabled. Check the permissions and owner of that directory. If executing pip with sudo, you may want sudo's -H flag.
+Collecting virtualenv
+  Downloading virtualenv-20.4.3-py2.py3-none-any.whl (7.2 MB)
+     |████████████████████████████████| 7.2 MB 3.5 MB/s
+Collecting six<2,>=1.9.0
+  Downloading six-1.15.0-py2.py3-none-any.whl (10 kB)
+Collecting appdirs<2,>=1.4.3
+  Downloading appdirs-1.4.4-py2.py3-none-any.whl (9.6 kB)
+Collecting distlib<1,>=0.3.1
+  Downloading distlib-0.3.1-py2.py3-none-any.whl (335 kB)
+     |████████████████████████████████| 335 kB 5.8 MB/s
+Collecting filelock<4,>=3.0.0
+  Downloading filelock-3.0.12-py3-none-any.whl (7.6 kB)
+Installing collected packages: six, appdirs, distlib, filelock, virtualenv
+Successfully installed appdirs-1.4.4 distlib-0.3.1 filelock-3.0.12 six-1.15.0 virtualenv-20.4.3
+WARNING: You are using pip version 20.2.3; however, version 21.0.1 is available.
+You should consider upgrading via the '/Library/Frameworks/Python.framework/Versions/3.9/bin/python3.9 -m pip install --upgrade pip' command.
+
+// ---
+
+NOTE: If python3 is configured as the default versions - we should have no problems, but may still have to use sudo
+
+ppalancica@Pavels-MacBook-Pro django-crash-course % sudo pip3 install virtualenv
+Password:
+WARNING: The directory '/Users/ppalancica/Library/Caches/pip' or its parent directory is not owned or is not writable by the current user. The cache has been disabled. Check the permissions and owner of that directory. If executing pip with sudo, you may want sudo's -H flag.
+Collecting virtualenv
+  Downloading virtualenv-20.4.3-py2.py3-none-any.whl (7.2 MB)
+     |████████████████████████████████| 7.2 MB 2.1 MB/s
+Collecting distlib<1,>=0.3.1
+  Downloading distlib-0.3.1-py2.py3-none-any.whl (335 kB)
+     |████████████████████████████████| 335 kB 3.2 MB/s
+Collecting appdirs<2,>=1.4.3
+  Downloading appdirs-1.4.4-py2.py3-none-any.whl (9.6 kB)
+Collecting six<2,>=1.9.0
+  Downloading six-1.15.0-py2.py3-none-any.whl (10 kB)
+Collecting filelock<4,>=3.0.0
+  Downloading filelock-3.0.12-py3-none-any.whl (7.6 kB)
+Installing collected packages: six, filelock, distlib, appdirs, virtualenv
+Successfully installed appdirs-1.4.4 distlib-0.3.1 filelock-3.0.12 six-1.15.0 virtualenv-20.4.3
+
+// ---
+
+$ virtualenv env
+
+$ source env/bin/activate
+
+// ---
+
+$ source env\Scripts\activate
+
+// ---
+
+$ pip install django
+
+$ django-admin startproject crashcourse .
+
+// ---
+
+The . will cause the creation of those file inside the folder.
+
+So there will be the working directory, then the crashcourse folder.
+Otherwise, a crashcourse folder insider another crashcourse folder will get created.
+
+// ---
+
+$ python manage.py runserver
+
+http://127.0.0.1:8000/
+
+// ---
+
+(env) ppalancica@Pavels-MacBook-Pro django-crash-course % python3 manage.py runserver
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified no issues (0 silenced).
+
+You have 18 unapplied migration(s). Your project may not work properly until you apply the migrations for app(s): admin, auth, contenttypes, sessions.
+Run 'python manage.py migrate' to apply them.
+April 01, 2021 - 19:50:04
+Django version 3.1.7, using settings 'crashcourse.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CONTROL-C.
+[01/Apr/2021 19:50:43] "GET / HTTP/1.1" 200 16351
+[01/Apr/2021 19:50:43] "GET /static/admin/css/fonts.css HTTP/1.1" 200 423
+[01/Apr/2021 19:50:43] "GET /static/admin/fonts/Roboto-Bold-webfont.woff HTTP/1.1" 200 86184
+[01/Apr/2021 19:50:43] "GET /static/admin/fonts/Roboto-Regular-webfont.woff HTTP/1.1" 200 85876
+[01/Apr/2021 19:50:43] "GET /static/admin/fonts/Roboto-Light-webfont.woff HTTP/1.1" 200 85692
+Not Found: /favicon.ico
+[01/Apr/2021 19:50:44] "GET /favicon.ico HTTP/1.1" 404 1977
+
+// ---
+
+$ python manage.py migrate
+
+// ---
+
+(env) ppalancica@Pavels-MacBook-Pro django-crash-course % python3 manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, sessions
+Running migrations:
+  Applying contenttypes.0001_initial... OK
+  Applying auth.0001_initial... OK
+  Applying admin.0001_initial... OK
+  Applying admin.0002_logentry_remove_auto_add... OK
+  Applying admin.0003_logentry_add_action_flag_choices... OK
+  Applying contenttypes.0002_remove_content_type_name... OK
+  Applying auth.0002_alter_permission_name_max_length... OK
+  Applying auth.0003_alter_user_email_max_length... OK
+  Applying auth.0004_alter_user_username_opts... OK
+  Applying auth.0005_alter_user_last_login_null... OK
+  Applying auth.0006_require_contenttypes_0002... OK
+  Applying auth.0007_alter_validators_add_error_messages... OK
+  Applying auth.0008_alter_user_username_max_length... OK
+  Applying auth.0009_alter_user_last_name_max_length... OK
+  Applying auth.0010_alter_group_name_max_length... OK
+  Applying auth.0011_update_proxy_permissions... OK
+  Applying auth.0012_alter_user_first_name_max_length... OK
+  Applying sessions.0001_initial... OK
+(env) ppalancica@Pavels-MacBook-Pro django-crash-course %
+
+// ---
+
+It created a schema for our database inside the db.sqlite3 file.
+
+$ python manage.py startapp todo
+
+--- Models and Admin
+
+Add to todo/models.py:
+
+from django.db import models
+
+class Todo(models.Model):
+    name = models.CharField(max_length=100)
+    due_date = models.DateField()
+
+$ python manage.py makemigrations
+
+// ---
+
+(env) ppalancica@Pavels-MacBook-Pro django-crash-course % python3 manage.py makemigrations
+Migrations for 'todo':
+  todo/migrations/0001_initial.py
+    - Create model Todo
+
+// ---
+
+$ python manage.py migrate
+
+// ---
+
+(env) ppalancica@Pavels-MacBook-Pro django-crash-course % python3 manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, sessions, todo
+Running migrations:
+  Applying todo.0001_initial... OK
+
+// ---
+
+http://127.0.0.1:8000/admin
+http://127.0.0.1:8000/admin/login/?next=/admin/
+
+$ python manage.py createsuperuser
+
+// ---
+
+(env) ppalancica@Pavels-MacBook-Pro django-crash-course % python3 manage.py createsuperuser
+Username (leave blank to use 'ppalancica'): admin
+Email address: pavel@idevtv.com
+Password:
+Password (again):
+This password is too common.
+Bypass password validation and create user anyway? [y/N]: y
+Superuser created successfully.
+
+// ---
+
+http://127.0.0.1:8000/admin/auth/user/
+
+To add the Todo model to Django Admin, add to todo/admin.py:
+
+from django.contrib import admin
+
+from .models import Todo
+
+# Register your models here.
+
+admin.site.register(Todo)
+
+Also, to display the name of the object in the admin, add a __str__ method to Todo:
+
+
+from django.db import models
+
+# Create your models here.
+
+class Todo(models.Model):
+    name = models.CharField(max_length=100)
+    due_date = models.DateField()
+
+    def __str__(self):
+        return self.name
+
+--- Views and Templates
+
+Add to todo/views.py:
+
+from django.http import HttpResponse
+from django.shortcuts import render
+
+# Create your views here.
+
+def todo_list(request):
+    return HttpResponse("Hello World")
+
+Add to crashcourse/urls.py:
+
+from django.contrib import admin
+from django.urls import path
+
+from todo.views import todo_list
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', todo_list)
+]
+
+Open http://127.0.0.1:8000/ and we should see Hello World in the browser.
+
+Create a global templates folder (django-crash-course/templates) and a todo_list2.html file:
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Django Crash Course</title>
+  </head>
+  <body>
+    Hello World
+  </body>
+</html>
+
+
+Create a folder django-crash-course/todo/templates.
+Create a folder django-crash-course/todo/templates/todo.
+Create a file django-crash-course/todo/templates/todo/todo_list.html.
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Django Crash Course</title>
+  </head>
+  <body>
+    Hello World
+  </body>
+</html>
+
+To use the global template, we have to tell Django about it.
+
+Add inside crashcourse/settings.py:
+
+import os
+
+Then make sure DIRS inside TEMPLATES looks like this:
+
+'DIRS': [
+    os.path.join(BASE_DIR, "templates")
+],
+
+Change todo/views.py to:
+
+from django.http import HttpResponse
+from django.shortcuts import render
+
+def todo_list(request):
+    return render(request, "todo/todo_list.html")
+
+Open http://127.0.0.1:8000/ and we should see the same response.
+
+We can also use this:
+
+return render(request, "todo_list2.html")
+
+--- Todo List View
+
+Create a file urls.py inside django-crash-course/todo
+
+Inside django-crash-course/crashcourse/urls.py replace:
+from django.urls import path
+
+with:
+from django.urls import path, include
+
+And replace:
+path('', todo_list)
+
+with:
+path('', include('todo.urls', namespace='todos'))
+
+Add to django-crash-course/todo/urls.py:
+
+from django.urls import path
+
+from .views import todo_list
+
+urlpatterns = [
+    path('', todo_list)
+]
+
+Add to django-crash-course/todo/views.py:
+
+from .models import Todo
+
+Then replace the todo_list method with:
+
+def todo_list(request):
+    todos = Todo.objects.all()
+    print(todos)
+    return render(request, "todo/todo_list.html")
+
+Re-run the server:
+
+// ---
+
+File "/Users/ppalancica/Development/Projects/django-crash-course/env/lib/python3.9/site-packages/django/urls/conf.py", line 38, in include
+    raise ImproperlyConfigured(
+django.core.exceptions.ImproperlyConfigured: Specifying a namespace in include() without providing an app_name is not supported. Set the app_name attribute in the included module, or pass a 2-tuple containing the list of patterns and app_name instead.
+
+// ---
+
+Add to django-crash-course/todo/urls.py:
+app_name = 'todos'
+
+Re-run the server:
+
+// ---
+
+(env) ppalancica@Pavels-MacBook-Pro django-crash-course % python3 manage.py runserver
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified no issues (0 silenced).
+April 11, 2021 - 21:43:25
+Django version 3.1.7, using settings 'crashcourse.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CONTROL-C.
+<QuerySet [<Todo: My first todo>]>
+[11/Apr/2021 21:43:36] "GET / HTTP/1.1" 200 171
+
+// ---
+
+QuerySet - a list of instances of a model.
+
+Replace the todo_list method inside django-crash-course/todo/views.py with:
+
+def todo_list(request):
+    todos = Todo.objects.all()
+    print(todos)
+    context = {
+        "todo_list": todos
+    }
+    return render(request, "todo/todo_list.html", context)
+
+--- Template Syntax
+
+Delete django-crash-course/templates/todo_list2.html
+
+Inside django-crash-course/todo/templates/todo replace:
+
+Hello World
+
+with:
+<!-- {{ request.user.is_authenticated }} -->
+
+{% if request.user.is_authenticated %}
+  Hello {{ request.user.username }}
+{% else %}
+  Hello anonymous user
+{% endif %}
+
+<ul>
+  {% for todo in todo_list %}
+
+    <li>{{ todo.name }} it's due {{ todo.due_date }}</li>
+
+  {% endfor %}
+</ul>
+
+--- Todo Detail View
+
+CRUD - Create, Retrieve, Update, Delete // List
+
+Add a new method to django-crash-course/todo/views.py:
+
+def todo_detail(request, id):
+    todo = Todo.objects.get(id=id)
+    context = {
+        "todo": todo
+    }
+    return render(request, "todo/todo_detail.html", context)
+
+Add to django-crash-course/todo/urls.py:
+from .views import todo_list, todo_detail
+
+Add to urlpatterns:
+path('<id>/', todo_detail)
+
+Create a new template file todo_detail.html:
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Django Crash Course</title>
+  </head>
+  <body>
+    {% if request.user.is_authenticated %}
+      Hello {{ request.user.username }}
+    {% else %}
+      Hello anonymous user
+    {% endif %}
+
+    The todo name is: {{ todo.name }}
+    The due date is: {{ todo.due_date }}
+
+  </body>
+</html>
+
+http://127.0.0.1:8000/1/
+
+Inside todo_detail.html replace:
+<li>{{ todo.name }} it's due {{ todo.due_date }}</li>
+
+with:
+<li><a href="/{{ todo.id }}">{{ todo.name }}</a> it's due {{ todo.due_date }}</li>
+
+--- Todo Create View
+
+Create a file forms.py inside django-crash-course/todo
+
+from django import forms
+from .models import Todo
+
+class TodoForm(forms.ModelForm):
+    class Meta:
+        model = Todo
+        fields = ['name', 'due_date']
+
+Add a new method to django-crash-course/todo/views.py:
+
+from .forms import TodoForm
+
+def todo_create(request):
+    form = TodoForm(request.POST or None)
+    if form.is_valid():
+        # create a todo object
+        pass
+    context = {}
+    return render(request, "todo/todo_create.html", context)
+
+Create a todo_create.html file:
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Django Crash Course</title>
+  </head>
+  <body>
+
+    <h4>Create a todo</h4>
+
+    <form method="POST">
+      {% csrf_token %}
+      <input name="name" />
+      <input name="due_date" />
+      <button type="submit">Submit</button>
+    </form>
+
+  </body>
+</html>
+
+Add to todo_list.html:
+<a href="/create">Create a todo</a>
+
+
+Add to django-crash-course/todo/urls.py:
+from .views import todo_list, todo_detail, todo_create
+
+And add to urlpatterns:
+path('create/', todo_create)
+
+Inside django-crash-course/todo/views.py change the todo_create method to:
+
+def todo_create(request):
+    form = TodoForm(request.POST or None)
+    if form.is_valid():
+        print(form.cleaned_data)
+        # create a todo object
+        pass
+    context = { "form": form }
+    return render(request, "todo/todo_create.html", context)
+
+Inside todo_create.html replace:
+<input name="name" />
+<input name="due_date" />
+
+with:
+{{ form }}
+
+// or {{ form.as_p }}
+
+http://127.0.0.1:8000/create/
+
+Add:
+second todo
+2020-03-30
+
+Click Submit
+
+// ---
+[11/Apr/2021 22:49:41] "GET / HTTP/1.1" 200 438
+[11/Apr/2021 22:49:42] "GET /create/ HTTP/1.1" 200 901
+{'name': 'second todo', 'due_date': datetime.date(2020, 3, 30)}
+[11/Apr/2021 22:49:54] "POST /create/ HTTP/1.1" 200 979
+
+// ---
+
+def todo_create(request):
+    form = TodoForm(request.POST or None)
+    if form.is_valid():
+        print(form.cleaned_data)
+        name = form.cleaned_data['name']
+        due_date = form.cleaned_data['due_date']
+        print(name, due_date)
+        new_todo = Todo.objects.create(name=name, due_date=due_date)
+        # create a todo object
+        pass
+    context = { "form": form }
+    return render(request, "todo/todo_create.html", context)
+
+We can simplify the method above to:
+
+from django.shortcuts import render, redirect
+
+def todo_create(request):
+    form = TodoForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect('/')
+    context = { "form": form }
+    return render(request, "todo/todo_create.html", context)
+
+third todo
+04/04/2020
+
+--- Todo Update View
+
+Add a new method to django-crash-course/todo/views.py:
+
+def todo_update(request, id):
+    todo = Todo.objects.get(id=id)
+    form = TodoForm(request.POST or None, instance=todo)
+    if form.is_valid():
+        form.save()
+        return redirect('/')
+    context = { "form": form }
+    return render(request, "todo/todo_update.html", context)
+
+Create a todo_update.html template file:
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Django Crash Course</title>
+  </head>
+  <body>
+
+    <h4>Update a todo</h4>
+
+    <form method="POST">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Submit</button>
+    </form>
+
+  </body>
+</html>
+
+Add to django-crash-course/todo/urls.py:
+
+from .views import (
+    todo_list,
+    todo_detail,
+    todo_create,
+    todo_update
+)
+
+Add to urlpatterns:
+path('<id>/update/', todo_update)
+
+Add to todo_detail.html:
+<a href="/{{ todo.id }}/update/">Update this todo</a>
+
+--- Todo Delete View
+
+Add a new method to django-crash-course/todo/views.py:
+
+def todo_delete(request, id):
+    todo = Todo.objects.get(id=id)
+    todo.delete()
+    return redirect('/')
+
+Add to django-crash-course/todo/urls.py:
+
+from .views import (
+    todo_list,
+    todo_detail,
+    todo_create,
+    todo_update,
+    todo_delete
+)
+
+Add to urlpatterns:
+path('<id>/delete/', todo_delete),
+
+Add to todo_detail.html:
+<a href="/{{ todo.id }}/delete/">Delete this todo</a>
+
+--- Styling
+
+https://getbootstrap.com/
+
+<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+
+Create a file base.html inside django-crash-course/templates:
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Django Crash Course</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="container">
+      {% block content %}
+      {% endblock content %}
+    </div>
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+  </body>
+</html>
+
+Change todo_list.html file contents to:
+
+{% extends "base.html" %}
+
+{% block content %}
+
+    <div class="text-center">
+      <p>
+        {% if request.user.is_authenticated %}
+          Hello {{ request.user.username }}
+        {% else %}
+          Hello anonymous user
+        {% endif %}
+      </p>
+      <a class="btn btn-primary" href="/create">Create a todo</a>
+    </div>
+    <div class="col-4 offset-4">
+      {% for todo in todo_list %}
+        <div class="card mt-3">
+          <div class="card-header">
+            <a href="/{{ todo.id }}"><h4>{{ todo.name }}</h4></a>
+          </div>
+          <div class="card-body">
+            <p>It's due {{ todo.due_date }}</p>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+{% endblock %}
+
+Change todo_create.html file contents to:
+
+{% extends "base.html" %}
+
+{% block content %}
+
+  <div class="col-4 offset-4">
+    <h4>Create a todo</h4>
+    <form method="POST">
+      {% csrf_token %}
+      <!-- {{ form }} -->
+      {{ form.as_p }}
+      <button class="btn btn-primary" type="submit">Submit</button>
+    </form>
+  </div>
+
+{% endblock %}
+
+Change todo_detail.html file contents to:
+
+{% extends "base.html" %}
+
+{% block content %}
+
+  <div class="col-4 offset-4">
+    <a href="/" class="btn btn-secondary">Go home</a>
+    <div class="card mt-3">
+      <div class="card-header">
+        <a href="/{{ todo.id }}"><h4>{{ todo.name }}</h4></a>
+      </div>
+      <div class="card-body">
+        <p>It's due {{ todo.due_date }}</p>
+      </div>
+      <div class="card-footer">
+        <a href="/{{ todo.id }}/update/" class="btn btn-secondary">
+          Update this todo
+        </a>
+        <a href="/{{ todo.id }}/delete/" class="btn btn-secondary">
+          Delete this todo
+        </a>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
+
+Change todo_update.html file contents to:
+
+{% extends "base.html" %}
+
+{% block content %}
+
+  <div class="col-4 offset-4">
+    <a href="/" class="btn btn-secondary">Go home</a>
+    <h4>Update todo</h4>
+    <form method="POST">
+      {% csrf_token %}
+      <!-- {{ form }} -->
+      {{ form.as_p }}
+      <button class="btn btn-primary" type="submit">Submit</button>
+    </form>
+  </div>
+
+{% endblock %}
+
+
+
+...
